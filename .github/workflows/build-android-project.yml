@@ -22,12 +22,15 @@ jobs:
     steps:
 
     - name: "Checkout: Code"
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+      with:
+        lfs: true
 
     - name: "Checkout: Code (PR)"
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       if: "contains(github.event_name, 'pull_request')"
       with:
+        lfs: true
         ref: ${{github.event.pull_request.head.ref}}
         repository: ${{github.event.pull_request.head.repo.full_name}}
 
